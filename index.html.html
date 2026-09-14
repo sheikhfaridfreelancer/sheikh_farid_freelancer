@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sheikh Farid · Web Design Studio</title>
+  <!-- Tailwind CDN (v3) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome for icons (optional but helpful) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Custom Tailwind config for seegreen + highlight gradient -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            seegreen: {
+              50: '#e6f7f0',
+              100: '#ccefe1',
+              200: '#99dfc3',
+              300: '#66cfa5',
+              400: '#33bf87',
+              500: '#00af69',   // primary seegreen
+              600: '#008c54',
+              700: '#00693f',
+              800: '#00462a',
+              900: '#002315',
+            },
+            highlight: {
+              red: '#ff3b3b',
+              orange: '#ff8c42',
+            }
+          },
+          backgroundImage: {
+            'grad-red-orange': 'linear-gradient(135deg, #ff3b3b, #ff8c42)',
+            'grad-seegreen': 'linear-gradient(135deg, #00af69, #33bf87)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* smooth scroll */
+    html { scroll-behavior: smooth; }
+    /* custom card hover */
+    .project-card:hover, .team-card:hover {
+      transform: translateY(-6px);
+      transition: all 0.2s ease;
+    }
+    /* map container */
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      filter: grayscale(20%) contrast(1.1);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 font-sans antialiased text-gray-800">
+
+  <!-- ========== HEADER / NAVIGATION ========== -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm border-b-2 border-highlight-red/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+      <!-- logo / brand -->
+      <div class="flex items-center gap-2">
+        <span class="text-2xl font-black bg-gradient-to-r from-highlight-red to-highlight-orange bg-clip-text text-transparent">SF</span>
+        <span class="text-xl font-semibold tracking-tight text-seegreen-800">Farid<span class="text-highlight-red">.</span>Dev</span>
+      </div>
+      <!-- desktop nav -->
+      <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+        <a href="#hero" class="hover:text-highlight-red transition">Home</a>
+        <a href="#services" class="hover:text-highlight-red transition">Services</a>
+        <a href="#projects" class="hover:text-highlight-red transition">Projects</a>
+        <a href="#about" class="hover:text-highlight-red transition">About</a>
+        <a href="#team" class="hover:text-highlight-red transition">Team</a>
+        <a href="#testimonials" class="hover:text-highlight-red transition">Reviews</a>
+        <a href="#payment" class="hover:text-highlight-red transition">Payment</a>
+        <a href="#contact" class="hover:text-highlight-red transition">Contact</a>
+      </nav>
+      <!-- CTA button (mobile hidden) -->
+      <a href="#contact" class="hidden md:inline-block bg-gradient-to-r from-highlight-red to-highlight-orange text-white text-sm font-semibold px-5 py-2 rounded-full shadow hover:shadow-lg transition">Get a quote</a>
+      <!-- mobile menu button (simple) -->
+      <button id="mobileMenuBtn" class="md:hidden text-2xl text-seegreen-700 focus:outline-none">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <!-- mobile nav dropdown -->
+    <div id="mobileMenu" class="md:hidden hidden bg-white border-t px-4 py-3 space-y-2 text-sm font-medium">
+      <a href="#hero" class="block hover:text-highlight-red">Home</a>
+      <a href="#services" class="block hover:text-highlight-red">Services</a>
+      <a href="#projects" class="block hover:text-highlight-red">Projects</a>
+      <a href="#about" class="block hover:text-highlight-red">About</a>
+      <a href="#team" class="block hover:text-highlight-red">Team</a>
+      <a href="#testimonials" class="block hover:text-highlight-red">Reviews</a>
+      <a href="#payment" class="block hover:text-highlight-red">Payment</a>
+      <a href="#contact" class="block hover:text-highlight-red">Contact</a>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-16 md:space-y-24">
+
+    <!-- ========== 1. HERO SECTION ========== -->
+    <section id="hero" class="scroll-mt-20 grid md:grid-cols-2 gap-8 items-center bg-white/70 backdrop-blur-sm rounded-3xl p-6 md:p-10 shadow-sm border border-seegreen-100">
+      <div class="space-y-6">
+        <span class="inline-block text-xs font-semibold bg-gradient-to-r from-highlight-red/10 to-highlight-orange/10 text-highlight-red px-3 py-1 rounded-full border border-highlight-red/20">🚀 High-converting websites</span>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
+          <span class="bg-gradient-to-r from-highlight-red to-highlight-orange bg-clip-text text-transparent">Stunning</span> websites that <span class="text-seegreen-600">sell</span> for you.
+        </h1>
+        <p class="text-lg text-gray-600 max-w-lg">We craft modern, mobile-first websites that turn visitors into customers. From business sites to e‑commerce — built with speed, style, and strategy.</p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#contact" class="bg-gradient-to-r from-highlight-red to-highlight-orange text-white font-semibold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition text-center">Start your project →</a>
+          <a href="#projects" class="border-2 border-seegreen-300 text-seegreen-700 font-semibold px-8 py-3 rounded-full hover:bg-seegreen-50 transition text-center">See our work</a>
+        </div>
+        <div class="flex items-center gap-4 text-sm text-gray-500 pt-2">
+          <span class="flex items-center gap-1"><i class="fas fa-check-circle text-seegreen-500"></i> 50+ projects</span>
+          <span class="flex items-center gap-1"><i class="fas fa-star text-highlight-orange"></i> 4.9/5 rating</span>
+        </div>
+      </div>
+      <div class="relative flex justify-center items-center">
+        <div class="w-full max-w-md aspect-square bg-gradient-to-br from-seegreen-100 to-seegreen-50 rounded-3xl shadow-2xl flex items-center justify-center p-6 border-4 border-white">
+          <div class="text-center">
+            <i class="fas fa-laptop-code text-7xl text-seegreen-500 drop-shadow-md"></i>
+            <p class="mt-4 font-semibold text-seegreen-800">Your vision, our code</p>
+            <p class="text-sm text-gray-500">100% responsive</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 2. COMPANY LOGOS (trust badges) ========== -->
+    <section class="text-center">
+      <p class="text-sm uppercase tracking-widest text-gray-400 font-semibold mb-6">Trusted by local brands & startups</p>
+      <div class="flex flex-wrap justify-center items-center gap-8 md:gap-14 opacity-70">
+        <span class="text-2xl font-bold text-gray-400"><i class="fas fa-store-alt mr-1 text-seegreen-400"></i> ShopBD</span>
+        <span class="text-2xl font-bold text-gray-400"><i class="fas fa-utensils mr-1 text-highlight-orange"></i> Foodie</span>
+        <span class="text-2xl font-bold text-gray-400"><i class="fas fa-chart-line mr-1 text-seegreen-400"></i> FinTech</span>
+        <span class="text-2xl font-bold text-gray-400"><i class="fas fa-graduation-cap mr-1 text-highlight-red"></i> EduPro</span>
+        <span class="text-2xl font-bold text-gray-400"><i class="fas fa-plane mr-1 text-seegreen-400"></i> TravelX</span>
+      </div>
+    </section>
+
+    <!-- ========== 3. SERVICES ========== -->
+    <section id="services" class="scroll-mt-20">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold inline-block bg-gradient-to-r from-seegreen-600 to-seegreen-400 bg-clip-text text-transparent">What we build</h2>
+        <p class="text-gray-500 mt-2 max-w-xl mx-auto">Websites that match your brand and drive results.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- card 1 -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-seegreen-100 hover:shadow-md transition">
+          <i class="fas fa-building text-3xl text-highlight-red mb-3"></i>
+          <h3 class="text-xl font-bold text-seegreen-800">Business Websites</h3>
+          <p class="text-gray-600 mt-2 text-sm">Professional sites that establish authority and generate leads.</p>
+        </div>
+        <!-- card 2 -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-seegreen-100 hover:shadow-md transition">
+          <i class="fas fa-cart-shopping text-3xl text-highlight-orange mb-3"></i>
+          <h3 class="text-xl font-bold text-seegreen-800">E‑commerce</h3>
+          <p class="text-gray-600 mt-2 text-sm">Sell online with secure payment (including bKash) and smooth checkout.</p>
+        </div>
+        <!-- card 3 -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-seegreen-100 hover:shadow-md transition">
+          <i class="fas fa-paint-brush text-3xl text-seegreen-500 mb-3"></i>
+          <h3 class="text-xl font-bold text-seegreen-800">Portfolio & Personal</h3>
+          <p class="text-gray-600 mt-2 text-sm">Showcase your work with a modern, minimalist portfolio.</p>
+        </div>
+        <!-- card 4 -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-seegreen-100 hover:shadow-md transition">
+          <i class="fas fa-mobile-screen text-3xl text-highlight-red mb-3"></i>
+          <h3 class="text-xl font-bold text-seegreen-800">Landing Pages</h3>
+          <p class="text-gray-600 mt-2 text-sm">High-conversion pages for ads, launches, and campaigns.</p>
+        </div>
+        <!-- card 5 -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-seegreen-100 hover:shadow-md transition">
+          <i class="fas fa-rotate text-3xl text-highlight-orange mb-3"></i>
+          <h3 class="text-xl font-bold text-seegreen-800">Redesign</h3>
+          <p class="text-gray-600 mt-2 text-sm">Give your old website a fresh, modern look and better speed.</p>
+        </div>
+        <!-- card 6 -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-seegreen-100 hover:shadow-md transition">
+          <i class="fas fa-headset text-3xl text-seegreen-500 mb-3"></i>
+          <h3 class="text-xl font-bold text-seegreen-800">Maintenance</h3>
+          <p class="text-gray-600 mt-2 text-sm">Ongoing support, updates, and security for peace of mind.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 4. COMPLETED PROJECTS ========== -->
+    <section id="projects" class="scroll-mt-20">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-highlight-red to-highlight-orange bg-clip-text text-transparent inline-block">Completed projects</h2>
+        <p class="text-gray-500 mt-2">Real websites, real results.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- project 1 -->
+        <div class="project-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 transition duration-200">
+          <div class="h-40 bg-gradient-to-br from-seegreen-200 to-seegreen-100 flex items-center justify-center text-4xl text-seegreen-600"><i class="fas fa-store"></i></div>
+          <div class="p-4">
+            <h4 class="font-bold text-seegreen-800">Deshi Mart</h4>
+            <p class="text-xs text-gray-500">E‑commerce · bKash integrated</p>
+          </div>
+        </div>
+        <!-- project 2 -->
+        <div class="project-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 transition duration-200">
+          <div class="h-40 bg-gradient-to-br from-highlight-red/20 to-highlight-orange/20 flex items-center justify-center text-4xl text-highlight-red"><i class="fas fa-chart-pie"></i></div>
+          <div class="p-4">
+            <h4 class="font-bold text-seegreen-800">FinTrack</h4>
+            <p class="text-xs text-gray-500">Business dashboard & landing</p>
+          </div>
+        </div>
+        <!-- project 3 -->
+        <div class="project-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 transition duration-200">
+          <div class="h-40 bg-gradient-to-br from-seegreen-100 to-seegreen-200 flex items-center justify-center text-4xl text-seegreen-600"><i class="fas fa-utensils"></i></div>
+          <div class="p-4">
+            <h4 class="font-bold text-seegreen-800">Chandpur Bites</h4>
+            <p class="text-xs text-gray-500">Restaurant & online ordering</p>
+          </div>
+        </div>
+        <!-- project 4 -->
+        <div class="project-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 transition duration-200">
+          <div class="h-40 bg-gradient-to-br from-highlight-orange/20 to-highlight-red/20 flex items-center justify-center text-4xl text-highlight-orange"><i class="fas fa-graduation-cap"></i></div>
+          <div class="p-4">
+            <h4 class="font-bold text-seegreen-800">EduSphere</h4>
+            <p class="text-xs text-gray-500">Online course platform</p>
+          </div>
+        </div>
+        <!-- project 5 -->
+        <div class="project-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 transition duration-200">
+          <div class="h-40 bg-gradient-to-br from-seegreen-200 to-seegreen-100 flex items-center justify-center text-4xl text-seegreen-600"><i class="fas fa-camera"></i></div>
+          <div class="p-4">
+            <h4 class="font-bold text-seegreen-800">Farid Photography</h4>
+            <p class="text-xs text-gray-500">Portfolio & booking</p>
+          </div>
+        </div>
+        <!-- project 6 -->
+        <div class="project-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 transition duration-200">
+          <div class="h-40 bg-gradient-to-br from-highlight-red/20 to-highlight-orange/20 flex items-center justify-center text-4xl text-highlight-red"><i class="fas fa-truck"></i></div>
+          <div class="p-4">
+            <h4 class="font-bold text-seegreen-800">LogiMove</h4>
+            <p class="text-xs text-gray-500">Logistics & tracking</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 5. ABOUT US ========== -->
+    <section id="about" class="scroll-mt-20 bg-white/60 rounded-3xl p-8 md:p-12 border border-seegreen-100 shadow-sm">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <h2 class="text-3xl font-bold text-seegreen-800">About <span class="bg-gradient-to-r from-highlight-red to-highlight-orange bg-clip-text text-transparent">Us</span></h2>
+          <p class="mt-4 text-gray-600 leading-relaxed">We are a small, passionate web studio based in Faridganj, Chandpur. Our mission is to make high-quality websites accessible to local businesses and entrepreneurs. We combine clean design with the latest technology to help you stand out online.</p>
+          <p class="mt-3 text-gray-600 leading-relaxed">Every project is personal — we listen, we build, and we deliver on time. Let’s grow together.</p>
+          <div class="mt-6 flex gap-4">
+            <span class="inline-flex items-center text-sm bg-seegreen-50 text-seegreen-700 px-3 py-1 rounded-full"><i class="fas fa-map-pin mr-1"></i> Faridganj, Chandpur</span>
+            <span class="inline-flex items-center text-sm bg-highlight-red/10 text-highlight-red px-3 py-1 rounded-full"><i class="fas fa-clock mr-1"></i> 5+ years</span>
+          </div>
+        </div>
+        <div class="bg-gradient-to-br from-seegreen-500 to-seegreen-400 rounded-2xl p-1 shadow-xl">
+          <div class="bg-white rounded-xl p-6 text-center">
+            <i class="fas fa-quote-left text-3xl text-highlight-orange/60"></i>
+            <p class="italic text-gray-700 mt-2">Design is not just what it looks like — it’s how it works for your business.</p>
+            <p class="mt-4 font-semibold text-seegreen-700">— Sheikh Farid, Founder</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 6. TEAM ========== -->
+    <section id="team" class="scroll-mt-20">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-seegreen-600 to-seegreen-400 bg-clip-text text-transparent inline-block">Meet the team</h2>
+        <p class="text-gray-500 mt-2">The humans behind the code.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- member 1 -->
+        <div class="team-card bg-white p-6 rounded-2xl shadow-sm border border-seegreen-100 text-center transition duration-200">
+          <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-seegreen-200 to-seegreen-100 flex items-center justify-center text-3xl font-bold text-seegreen-700 border-2 border-white shadow">SF</div>
+          <h3 class="mt-4 text-xl font-bold text-seegreen-800">Sheikh Farid</h3>
+          <p class="text-highlight-red text-sm font-medium">Founder & Lead Developer</p>
+          <p class="text-xs text-gray-500 mt-2">Full-stack developer, UI/UX lover.</p>
+        </div>
+        <!-- member 2 -->
+        <div class="team-card bg-white p-6 rounded-2xl shadow-sm border border-seegreen-100 text-center transition duration-200">
+          <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-highlight-orange/20 to-highlight-red/20 flex items-center justify-center text-3xl font-bold text-highlight-red border-2 border-white shadow">NA</div>
+          <h3 class="mt-4 text-xl font-bold text-seegreen-800">Nusrat Ara</h3>
+          <p class="text-highlight-red text-sm font-medium">Designer</p>
+          <p class="text-xs text-gray-500 mt-2">Creates clean, brand-focused visuals.</p>
+        </div>
+        <!-- member 3 -->
+        <div class="team-card bg-white p-6 rounded-2xl shadow-sm border border-seegreen-100 text-center transition duration-200">
+          <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-seegreen-200 to-seegreen-100 flex items-center justify-center text-3xl font-bold text-seegreen-700 border-2 border-white shadow">RH</div>
+          <h3 class="mt-4 text-xl font-bold text-seegreen-800">Rakib Hasan</h3>
+          <p class="text-highlight-red text-sm font-medium">Frontend Developer</p>
+          <p class="text-xs text-gray-500 mt-2">Makes everything pixel-perfect.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 7. TESTIMONIALS & REVIEWS ========== -->
+    <section id="testimonials" class="scroll-mt-20">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold inline-block bg-gradient-to-r from-highlight-red to-highlight-orange bg-clip-text text-transparent">Client stories</h2>
+        <p class="text-gray-500 mt-2">Hear from people we’ve helped.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- testimonial 1 -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-seegreen-400">
+          <i class="fas fa-star text-highlight-orange"></i><i class="fas fa-star text-highlight-orange"></i><i class="fas fa-star text-highlight-orange"></i><i class="fas fa-star text-highlight-orange"></i><i class="fas fa-star text-highlight-orange"></i>
+          <p class="mt-3 text-gray-600 italic">"Our online sales doubled after the new website. The bKash integration is seamless!"</p>
+          <p class="mt-4 font-semibold text-seegreen-800">— Tanvir Ahmed, Deshi Mart</p>
+        </div>
+        <!-- testimonial 2 -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-highlight-red">
+          <i class="fas fa-star text-highlight-orange"></i><i class="fas fa-star text-highlight-orange"></i><i class="fas fa-star text-highlight-orange"></i><i class="fas fa-star text-highlight-orange"></i><i class="fas fa-star text-highlight-orange"></i>
+          <p class="mt-3 text-gray-600 italic">"Fast, professional, and creative. They understood exactly what we needed."</p>
+          <p class="mt-4 font-semibold text-seegreen-800">— Sultana Razia, EduSphere</p>
+        </div>
+        <!-- testimonial 3 -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-seegreen-400">
+          <i class="fas fa-star text-highlight-orange"></i><i class="fas fa-star text-highlight-orange"></i><i class="fas fa-star text-highlight-orange"></i><i class="fas fa-star text-highlight-orange"></i><i class="fas fa-star-half-alt text-highlight-orange"></i>
+          <p class="mt-3 text-gray-600 italic">"Highly recommended for anyone in Chandpur. Very supportive team."</p>
+          <p class="mt-4 font-semibold text-seegreen-800">— Imran Hossain, LogiMove</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 8. PAYMENT SYSTEM ========== -->
+    <section id="payment" class="scroll-mt-20 bg-gradient-to-br from-white to-seegreen-50/50 rounded-3xl p-6 md:p-10 border border-seegreen-100 shadow-sm">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold text-seegreen-800">Payment <span class="bg-gradient-to-r from-highlight-red to-highlight-orange bg-clip-text text-transparent">system</span></h2>
+        <p class="text-gray-500 mt-2">Pay via bKash (send money) or cash on delivery. Fill the form to confirm.</p>
+      </div>
+      <div class="max-w-2xl mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-md border border-seegreen-200">
+        <div class="flex flex-wrap gap-4 justify-center mb-6">
+          <span class="inline-flex items-center gap-2 bg-highlight-red/10 text-highlight-red px-4 py-2 rounded-full text-sm font-semibold"><i class="fas fa-mobile-alt"></i> bKash: 01777-199427</span>
+          <span class="inline-flex items-center gap-2 bg-seegreen-100 text-seegreen-700 px-4 py-2 rounded-full text-sm font-semibold"><i class="fas fa-hand-holding-usd"></i> Cash on delivery</span>
+        </div>
+        <form id="paymentForm" class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Full name</label>
+              <input type="text" name="name" required class="mt-1 w-full rounded-lg border-gray-300 border p-2 focus:ring-2 focus:ring-seegreen-400 focus:border-seegreen-400 outline-none" placeholder="Your name">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Mobile</label>
+              <input type="tel" name="mobile" required class="mt-1 w-full rounded-lg border-gray-300 border p-2 focus:ring-2 focus:ring-seegreen-400 focus:border-seegreen-400 outline-none" placeholder="01XXXXXXXXX">
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Email</label>
+            <input type="email" name="email" required class="mt-1 w-full rounded-lg border-gray-300 border p-2 focus:ring-2 focus:ring-seegreen-400 focus:border-seegreen-400 outline-none" placeholder="you@example.com">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">bKash last 4 digits</label>
+            <input type="text" name="bkashLast4" maxlength="4" class="mt-1 w-full rounded-lg border-gray-300 border p-2 focus:ring-2 focus:ring-seegreen-400 focus:border-seegreen-400 outline-none" placeholder="e.g. 1234">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Address</label>
+            <input type="text" name="address" required class="mt-1 w-full rounded-lg border-gray-300 border p-2 focus:ring-2 focus:ring-seegreen-400 focus:border-seegreen-400 outline-none" placeholder="Your delivery address">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Note (optional)</label>
+            <textarea name="note" rows="2" class="mt-1 w-full rounded-lg border-gray-300 border p-2 focus:ring-2 focus:ring-seegreen-400 focus:border-seegreen-400 outline-none" placeholder="Any special instruction..."></textarea>
+          </div>
+          <button type="submit" class="w-full bg-gradient-to-r from-highlight-red to-highlight-orange text-white font-bold py-3 rounded-xl shadow-md hover:shadow-lg transition text-lg">Send payment confirmation</button>
+        </form>
+        <p id="formFeedback" class="text-center text-sm mt-3 text-seegreen-600 hidden">✅ Thank you! We'll verify and confirm shortly.</p>
+      </div>
+    </section>
+
+    <!-- ========== 9. CONTACT US & MAP ========== -->
+    <section id="contact" class="scroll-mt-20 grid lg:grid-cols-2 gap-8 bg-white/80 rounded-3xl p-6 md:p-10 border border-seegreen-100 shadow-sm">
+      <div class="space-y-6">
+        <h2 class="text-3xl font-bold text-seegreen-800">Contact <span class="bg-gradient-to-r from-highlight-red to-highlight-orange bg-clip-text text-transparent">Us</span></h2>
+        <p class="text-gray-600">We’d love to hear from you! Reach out for a free consultation.</p>
+        <ul class="space-y-3">
+          <li class="flex items-center gap-3"><i class="fas fa-phone-alt text-highlight-red w-5"></i> <a href="tel:+8801777199427" class="hover:text-highlight-red">+880 1777 199427</a></li>
+          <li class="flex items-center gap-3"><i class="fas fa-envelope text-highlight-red w-5"></i> <a href="mailto:shiekhfarid06014@gmail.com" class="hover:text-highlight-red">shiekhfarid06014@gmail.com</a></li>
+          <li class="flex items-center gap-3"><i class="fas fa-map-marker-alt text-highlight-red w-5"></i> Faridganj, Chandpur, Bangladesh</li>
+        </ul>
+        <div class="pt-2">
+          <p class="font-semibold text-seegreen-800 mb-2">Follow us:</p>
+          <div class="flex gap-4 text-2xl">
+            <a href="https://www.facebook.com/share/19Hw39JLj4/" target="_blank" class="text-seegreen-600 hover:text-highlight-red transition"><i class="fab fa-facebook"></i></a>
+            <a href="https://wa.me/8801777199427" target="_blank" class="text-seegreen-600 hover:text-highlight-red transition"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/invites/contact/?utm_source=ig_contact_invite&utm_medium=copy_link&utm_content=10mymbpy" target="_blank" class="text-seegreen-600 hover:text-highlight-red transition"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:sheikhfarid06014@gmail.com" class="text-seegreen-600 hover:text-highlight-red transition"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="map-container h-64 lg:h-auto rounded-2xl overflow-hidden border-2 border-seegreen-200 shadow-sm">
+        <!-- embedded google map: Faridganj, Chandpur -->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14694.84245735906!2d90.7408874!3d23.2106133!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3754e3e2b2b6e5e1%3A0x9a7f6f6b6b6b6b6b!2sFaridganj%2C%20Chandpur%2C%20Bangladesh!5e0!3m2!1sen!2sbd!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-seegreen-900 text-seegreen-100 mt-16 py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid sm:grid-cols-2 md:grid-cols-4 gap-8">
+      <div>
+        <span class="text-2xl font-black bg-gradient-to-r from-highlight-red to-highlight-orange bg-clip-text text-transparent">SF</span>
+        <span class="text-xl font-semibold text-white"> Farid.Dev</span>
+        <p class="mt-3 text-sm text-seegreen-200">Modern websites for growing businesses. Based in Chandpur, serving worldwide.</p>
+      </div>
+      <div>
+        <h4 class="font-bold text-white mb-3">Quick links</h4>
+        <ul class="space-y-1 text-sm">
+          <li><a href="#services" class="hover:text-highlight-orange">Services</a></li>
+          <li><a href="#projects" class="hover:text-highlight-orange">Projects</a></li>
+          <li><a href="#about" class="hover:text-highlight-orange">About</a></li>
+          <li><a href="#payment" class="hover:text-highlight-orange">Payment</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-white mb-3">Contact</h4>
+        <ul class="space-y-1 text-sm">
+          <li><i class="fas fa-phone-alt mr-2"></i> +8801777199427</li>
+          <li><i class="fas fa-envelope mr-2"></i> shiekhfarid06014@gmail.com</li>
+          <li><i class="fas fa-map-pin mr-2"></i> Faridganj, Chandpur, BD</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-white mb-3">Social</h4>
+        <div class="flex gap-4 text-2xl">
+          <a href="https://www.facebook.com/share/19Hw39JLj4/" target="_blank" class="hover:text-highlight-orange"><i class="fab fa-facebook"></i></a>
+          <a href="https://wa.me/8801777199427" target="_blank" class="hover:text-highlight-orange"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://www.instagram.com/invites/contact/?utm_source=ig_contact_invite&utm_medium=copy_link&utm_content=10mymbpy" target="_blank" class="hover:text-highlight-orange"><i class="fab fa-instagram"></i></a>
+          <a href="mailto:sheikhfarid06014@gmail.com" class="hover:text-highlight-orange"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center text-xs text-seegreen-400 mt-10 border-t border-seegreen-700 pt-6">
+      © 2025 Sheikh Farid Web Studio · All rights reserved.
+    </div>
+  </footer>
+
+  <!-- ========== VANILLA JS ========== -->
+  <script>
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileBtn) {
+      mobileBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    // Close mobile menu when a link is clicked
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Payment form handling
+    const paymentForm = document.getElementById('paymentForm');
+    const formFeedback = document.getElementById('formFeedback');
+    if (paymentForm) {
+      paymentForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // Show success message
+        formFeedback.classList.remove('hidden');
+        // Optionally reset the form (keep values if you prefer)
+        // paymentForm.reset();
+        // Hide message after 5 seconds
+        setTimeout(() => {
+          formFeedback.classList.add('hidden');
+        }, 5000);
+        // You can also alert or send data to backend here
+        alert('✅ Payment confirmation sent! We will contact you soon.');
+      });
+    }
+  </script>
+</body>
+</html>
